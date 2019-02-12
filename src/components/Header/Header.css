@@ -1,0 +1,23 @@
+.Header {
+  background-color: red;
+  margin: 0;
+  padding: 0;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 0 0 0 3vw;
+}
+
+.Header a {
+  text-decoration: none;
+  color: white;
+}
+
+nav a {
+  margin: 0 3vw 0 0;
+  font-size: 1.5em;
+}

@@ -31,7 +31,7 @@ class Create extends Component {
     console.log(this.state.newPost)
     
     axios.post(url, {
-      name: this.state.newPost.name,
+      author: this.state.newPost.name,
       content: this.state.newPost.content
     })
     .then(() => {

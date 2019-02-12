@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Post from '../Post/Post'
+import './Home.css'
 
 const url = 'http://localhost:3001/api/posts'
 
@@ -31,7 +32,6 @@ class Home extends Component {
     let i = posts.indexOf(post[0])
     
     post[0].likes = post[0].likes + 1
-
     let likes = post[0].likes
 
     posts[i] = post[0]
@@ -56,7 +56,7 @@ class Home extends Component {
     })
 
     return (
-      <div>
+      <div className="Home">
         {posts}
       </div>
     );
