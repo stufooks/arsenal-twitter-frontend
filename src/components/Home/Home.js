@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Post from '../Post/Post'
 
 const url = 'http://localhost:3001/api/posts'
 
@@ -27,8 +28,7 @@ class Home extends Component {
     let posts = this.state.posts.map(post => {
       return (
         <div key={post._id}>
-          <h1>{post.author}</h1>
-          <h2>{post.content}</h2>
+          <Post post={post} />
         </div>
       )
     })
