@@ -8,8 +8,19 @@
   align-items: center;
 }
 
+.Header > a {
+  display: flex;
+}
+
+.icon {
+  background-image: url("https://image.flaticon.com/icons/svg/738/738649.svg");
+  width: 50px;
+  height: 50px;
+  margin-left: 3vw;
+}
+
 h1 {
-  margin: 0 0 0 3vw;
+  margin: 0 0 0 1vw;
 }
 
 .Header a {
@@ -19,5 +30,5 @@ h1 {
 
 nav a {
   margin: 0 3vw 0 0;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }

@@ -13,7 +13,7 @@ class Post extends Component {
             <h4>Likes: {this.props.post.likes}</h4>
           </div>
         </Link>
-        <button onClick={this.props.likeHandler} name={this.props.post._id}>LIKE</button>
+        {!this.props.show ? <button onClick={this.props.likeHandler} name={this.props.post._id}>LIKE</button> : null}
       </div>
     );
   }

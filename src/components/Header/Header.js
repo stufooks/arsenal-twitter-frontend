@@ -6,7 +6,10 @@ class Header extends Component {
   render() {
     return (
       <div className="Header">
-        <Link to="/"><h1>Welcome to the Arsenal Fanpage</h1></Link>
+        <Link to="/">
+          <div className="icon"></div>
+          <h1>Arsenal Fanpage</h1>
+        </Link>
         <nav>
           <Link to="/create">New Post</Link>
         </nav>

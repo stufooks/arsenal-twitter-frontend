@@ -1,0 +1,21 @@
+.Create {
+  margin: 8vh auto;
+  border: 2px solid red;
+  border-radius: 5px;
+  width: 50%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form * {
+  margin: 10px 0;
+}
+
+.contentInput {
+  height: 100px;
+  width: 500px;
+}

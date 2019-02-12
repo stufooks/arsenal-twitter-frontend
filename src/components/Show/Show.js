@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import Post from '../Post/Post'
 import axios from 'axios';
+import './Show.css'
 
 const url = 'http://localhost:3001/api/posts/'
 
@@ -47,8 +48,8 @@ class Show extends Component {
   render() {
     return (
       <div className="Show">
-        <Post post={this.state.post}/>
-        <button onClick={this.clickHandler}>DELETE</button>
+        <Post post={this.state.post} show={true}/>
+        <button className="delete-button" onClick={this.clickHandler}>DELETE THIS POST</button>
 
         {this.state.redirect ? this.renderRedirect() : null}
       </div>

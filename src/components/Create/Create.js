@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import axios from 'axios';
+import './Create.css'
 
 const url = 'http://localhost:3001/api/posts'
 
@@ -51,12 +52,12 @@ class Create extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Create">
         <form onSubmit={this.submitHandler}>
-          <label>Your Display Name</label>
-          <input type="text" name="name" onChange={this.changeHandler}></input>
+          <label>Your Display Name:</label>
+          <input className="nameInput" type="text" name="name" onChange={this.changeHandler}></input>
           <label>Your Post:</label>
-          <input type="text" name="content" onChange={this.changeHandler}></input>
+          <input className="contentInput" type="text" name="content" onChange={this.changeHandler}></input>
           <input type="submit" value="SUBMIT"></input>
         </form>
         {this.state.redirect ? this.renderRedirect() : null}
