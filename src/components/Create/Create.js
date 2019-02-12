@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 
 const url = 'http://localhost:3001/api/posts'
@@ -8,7 +9,8 @@ class Create extends Component {
     super()
 
     this.state = {
-      newPost: {}
+      newPost: {},
+      redirect: false
     }
 
     this.changeHandler = this.changeHandler.bind(this)
@@ -26,18 +28,26 @@ class Create extends Component {
 
   submitHandler(e) {
     e.preventDefault()
+    console.log(this.state.newPost)
+    
     axios.post(url, {
       name: this.state.newPost.name,
       content: this.state.newPost.content
     })
     .then(() => {
       console.log('post done')
+      this.setState({
+        redirect: true
+      })
     })
     .catch(err => {
       console.log(err)
     })
   }
 
+  renderRedirect() {
+    return <Redirect to ="/" />
+  }
 
   render() {
     return (
@@ -49,6 +59,7 @@ class Create extends Component {
           <input type="text" name="content" onChange={this.changeHandler}></input>
           <input type="submit" value="SUBMIT"></input>
         </form>
+        {this.state.redirect ? this.renderRedirect() : null}
       </div>
     );
   }

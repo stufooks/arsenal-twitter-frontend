@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import Post from '../Post/Post'
 import axios from 'axios';
 
@@ -9,7 +10,8 @@ class Show extends Component {
     super()
 
     this.state = {
-      post: {}
+      post: {},
+      redirect: false
     }
 
     this.clickHandler = this.clickHandler.bind(this)
@@ -27,15 +29,28 @@ class Show extends Component {
 
   clickHandler() {
     axios.delete(url + this.props.match.params.id)
-    // .then(res => {
-    //   console.log('delete called')
-    // })
+    .then(() => {
+      console.log('delete called')
+      this.setState({
+        redirect: true
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  renderRedirect() {
+    return <Redirect to="/" />
   }
 
   render() {
     return (
       <div className="Show">
         <Post post={this.state.post}/>
+        <button onClick={this.clickHandler}>DELETE</button>
+
+        {this.state.redirect ? this.renderRedirect() : null}
       </div>
     );
   }

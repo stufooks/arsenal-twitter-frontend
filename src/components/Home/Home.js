@@ -11,6 +11,8 @@ class Home extends Component {
     this.state = {
       posts: []
     }
+
+    this.likeHandler = this.likeHandler.bind(this)
   }
 
   componentDidMount() {
@@ -23,12 +25,32 @@ class Home extends Component {
     })
   }
 
+  likeHandler(e) {
+    let posts = this.state.posts
+    let post = posts.filter(post => post._id === e.target.name)
+    let i = posts.indexOf(post[0])
+    
+    post[0].likes = post[0].likes + 1
+
+    let likes = post[0].likes
+
+    posts[i] = post[0]
+
+    this.setState({
+      posts: posts
+    })
+
+    axios.put(url + "/" + this.state.posts[i]._id, {
+      likes: likes
+    })
+  }
+
   render() {
 
     let posts = this.state.posts.map(post => {
       return (
         <div key={post._id}>
-          <Post post={post} />
+          <Post post={post} likeHandler={this.likeHandler}/>
         </div>
       )
     })

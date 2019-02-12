@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 class Post extends Component {
   render() {
-    console.log(this.props.post)
     return (
       <div className="Post">
-        <Link to={`/${this.props.post._id}`}>
-          <div className="card">
+        <Link to={`${this.props.post._id}`}>
+          <div className="content">
             <h1>{this.props.post.author}</h1>
             <h2>{this.props.post.content}</h2>
+            <h4>Likes: {this.props.post.likes}</h4>
           </div>
         </Link>
-        <button>LIKE</button>
+        <button onClick={this.props.likeHandler} name={this.props.post._id}>LIKE</button>
       </div>
     );
   }
