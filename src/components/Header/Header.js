@@ -11,7 +11,10 @@ class Header extends Component {
           <h1>Arsenal Fanpage</h1>
         </Link>
         <nav>
-          <Link to="/create">New Post</Link>
+          <Link to="/create">
+            <div className="new-icon"></div>
+            New Post
+          </Link>
         </nav>
       </div>
     );
