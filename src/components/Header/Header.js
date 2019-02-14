@@ -15,6 +15,9 @@ class Header extends Component {
             <div className="new-icon"></div>
             New Post
           </Link>
+          <Link to="/users/signup">
+            Sign Up
+          </Link>
         </nav>
       </div>
     );
