@@ -11,19 +11,10 @@ class Header extends Component {
           <h1>Arsenal Fanpage</h1>
         </Link>
         <nav>
-          <Link to="/create">
-            <div className="new-icon"></div>
-            New Post
-          </Link>
-          <Link to="/users/signup">
-            Sign Up
-          </Link>
-          <Link to="/users/login">
-            Log In
-          </Link>
-          <Link to="/users/logout">
-            Log Out
-          </Link>
+          {!this.props.isLoggedIn ? <Link to="/users/login">Log In</Link> : null}
+          {!this.props.isLoggedIn ? <Link to="/users/signup">Sign Up</Link> : null}
+          {this.props.isLoggedIn ? <Link to="/create"><div className="new-icon"></div>New Post</Link> : null}
+          {this.props.isLoggedIn ? <Link to="/users/logout">Log Out</Link> : null}
         </nav>
       </div>
     );

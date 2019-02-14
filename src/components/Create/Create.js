@@ -32,7 +32,7 @@ class Create extends Component {
     console.log(this.state.newPost)
     
     axios.post(url, {
-      author: this.state.newPost.name,
+      author: this.props.username,
       content: this.state.newPost.content
     })
     .then(() => {
@@ -54,8 +54,6 @@ class Create extends Component {
     return (
       <div className="Create">
         <form onSubmit={this.submitHandler}>
-          <label>Your Display Name:</label>
-          <input className="nameInput" type="text" name="name" onChange={this.changeHandler}></input>
           <label>Your Post:</label>
           <input className="contentInput" type="text" name="content" onChange={this.changeHandler}></input>
           <input type="submit" value="SUBMIT"></input>

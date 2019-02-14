@@ -6,9 +6,9 @@ class LogIn extends Component {
       <div className="LogIn">
         <form onSubmit={this.props.loginSubmit}>
           <label>Email:</label>
-          <input name="email" type="text" onChange={this.props.signupChanger}></input>
+          <input name="email" type="text" onChange={this.props.inputChanger}></input>
           <label>Password:</label>
-          <input name="password" type="password" onChange={this.props.signupChanger}></input>
+          <input name="password" type="password" onChange={this.props.inputChanger}></input>
           <input type="submit" value="SUBMIT"></input>
         </form>
       </div>

@@ -8,6 +8,7 @@ import SignUp from '../SignUp/SignUp'
 import LogIn from '../LogIn/LogIn'
 import LogOut from '../LogOut/LogOut'
 import axios from 'axios';
+import jwtDecode from 'jwt-decode'
 
 const url = 'http://localhost:3001/users'
 
@@ -22,13 +23,13 @@ class App extends Component {
       isLoggedIn: false
     }
 
-    this.signupChanger = this.signupChanger.bind(this)
+    this.inputChanger = this.inputChanger.bind(this)
     this.signupSubmit = this.signupSubmit.bind(this)
     this.loginSubmit = this.loginSubmit.bind(this)
     this.logoutSubmit = this.logoutSubmit.bind(this)
   }
 
-  signupChanger(e) {
+  inputChanger(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
 
@@ -54,7 +55,13 @@ class App extends Component {
     })
     .then(res => {
       localStorage.token = res.data.token
-      this.setState({isLoggedIn: true})
+      
+      let decoded = jwtDecode(localStorage.token)
+
+      this.setState({
+        isLoggedIn: true,
+        username: decoded.username
+      })
     })
     .catch(err => console.log(err))
   }
@@ -71,13 +78,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header isLoggedIn={this.state.isLoggedIn}/>
         <Switch>
-          <Route path="/users/signup" render={() => <SignUp signupChanger={this.signupChanger} signupSubmit={this.signupSubmit} />} />
-          <Route path="/users/login" render={() => <LogIn signupChanger={this.signupChanger} loginSubmit={this.loginSubmit}/>} />
+          <Route path="/users/signup" render={() => <SignUp inputChanger={this.inputChanger} signupSubmit={this.signupSubmit}/>} />
+          <Route path="/users/login" render={() => <LogIn inputChanger={this.inputChanger} loginSubmit={this.loginSubmit} isLoggedIn={this.state.isLoggedIn}/>} />
           <Route path="/users/logout" render={() => <LogOut logoutSubmit={this.logoutSubmit}/>} />
-          <Route path="/create" component={Create} />
-          <Route path="/:id" component={Show} />
+          <Route path="/create" render={() => <Create {...this.state} />} />
+          <Route path="/:id" render={(props) => <Show {...props} {...this.state}/>} />
           <Route path="/" component={Home} />
         </Switch>
       </div>

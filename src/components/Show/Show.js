@@ -12,7 +12,8 @@ class Show extends Component {
 
     this.state = {
       post: {},
-      redirect: false
+      redirect: false,
+      message: false
     }
 
     this.clickHandler = this.clickHandler.bind(this)
@@ -21,7 +22,6 @@ class Show extends Component {
   componentDidMount() {
     axios.get(url + this.props.match.params.id)
     .then(res => {
-      console.log(res.data[0])
       this.setState({
         post: res.data[0]
       })
@@ -29,12 +29,19 @@ class Show extends Component {
   }
 
   clickHandler() {
-    axios.delete(url + this.props.match.params.id)
-    .then(() => {
-      console.log('delete called')
-      this.setState({
-        redirect: true
-      })
+    axios.delete(url + this.props.match.params.id, {
+      data: {username: this.props.username}
+    })
+    .then(res => {
+      if(res.data) {
+        this.setState({
+          redirect: true
+        })
+      } else {
+        this.setState({
+          message: true
+        })
+      }
     })
     .catch(err => {
       console.log(err)
@@ -50,6 +57,7 @@ class Show extends Component {
       <div className="Show">
         <Post post={this.state.post} show={true}/>
         <button className="delete-button" onClick={this.clickHandler}>DELETE THIS POST</button>
+        {this.state.message ? <h1>Not your post!</h1> : null}
 
         {this.state.redirect ? this.renderRedirect() : null}
       </div>
