@@ -6,7 +6,6 @@ import Header from '../Header/Header'
 import Create from '../Create/Create'
 import SignUp from '../SignUp/SignUp'
 import LogIn from '../LogIn/LogIn'
-import LogOut from '../LogOut/LogOut'
 import axios from 'axios';
 import jwtDecode from 'jwt-decode'
 
@@ -78,11 +77,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header isLoggedIn={this.state.isLoggedIn}/>
+        <Header isLoggedIn={this.state.isLoggedIn} logoutSubmit={this.logoutSubmit}/>
         <Switch>
           <Route path="/users/signup" render={() => <SignUp inputChanger={this.inputChanger} signupSubmit={this.signupSubmit}/>} />
           <Route path="/users/login" render={() => <LogIn inputChanger={this.inputChanger} loginSubmit={this.loginSubmit} isLoggedIn={this.state.isLoggedIn}/>} />
-          <Route path="/users/logout" render={() => <LogOut logoutSubmit={this.logoutSubmit}/>} />
           <Route path="/create" render={() => <Create {...this.state} />} />
           <Route path="/:id" render={(props) => <Show {...props} {...this.state}/>} />
           <Route path="/" component={Home} />

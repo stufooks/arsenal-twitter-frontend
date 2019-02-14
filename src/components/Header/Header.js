@@ -14,7 +14,7 @@ class Header extends Component {
           {!this.props.isLoggedIn ? <Link to="/users/login">Log In</Link> : null}
           {!this.props.isLoggedIn ? <Link to="/users/signup">Sign Up</Link> : null}
           {this.props.isLoggedIn ? <Link to="/create"><div className="new-icon"></div>New Post</Link> : null}
-          {this.props.isLoggedIn ? <Link to="/users/logout">Log Out</Link> : null}
+          {this.props.isLoggedIn ? <Link to="/" onClick={this.props.logoutSubmit}>Log Out</Link> : null}
         </nav>
       </div>
     );
