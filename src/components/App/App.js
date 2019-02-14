@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
+import jwtDecode from 'jwt-decode'
 import Home from '../Home/Home'
 import Show from '../Show/Show'
 import Header from '../Header/Header'
@@ -7,7 +8,6 @@ import Create from '../Create/Create'
 import SignUp from '../SignUp/SignUp'
 import LogIn from '../LogIn/LogIn'
 import axios from 'axios';
-import jwtDecode from 'jwt-decode'
 
 const url = 'http://localhost:3001/users'
 
@@ -40,6 +40,7 @@ class App extends Component {
       password: this.state.password
     })
     .then(res => {
+      console.log(res.data)
       localStorage.token = res.data.token
       this.setState({ isLoggedIn: true })
     })
@@ -74,15 +75,14 @@ class App extends Component {
     localStorage.clear()
   }
 
-  componentDidMount() {
-    if(localStorage.token) {
-      let decoded = jwtDecode(localStorage.token)
-      this.setState({ 
-        isLoggedIn: true,
-        username: decoded.username
-       })
-    }
-  }
+  // componentDidMount() {
+  //   if(localStorage.token) {
+  //     let decoded = jwtDecode(localStorage.token)
+  //     this.setState({ 
+  //       isLoggedIn: true
+  //      })
+  //   }
+  // }
   
   render() {
     return (
