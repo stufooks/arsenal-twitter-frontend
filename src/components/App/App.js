@@ -89,7 +89,7 @@ class App extends Component {
       <div className="App">
         <Header isLoggedIn={this.state.isLoggedIn} logoutSubmit={this.logoutSubmit}/>
         <Switch>
-          <Route path="/users/signup" render={() => <SignUp inputChanger={this.inputChanger} signupSubmit={this.signupSubmit}/>} />
+          <Route path="/users/signup" render={() => <SignUp inputChanger={this.inputChanger} signupSubmit={this.signupSubmit} isLoggedIn={this.state.isLoggedIn}/>} />
           <Route path="/users/login" render={() => <LogIn inputChanger={this.inputChanger} loginSubmit={this.loginSubmit} isLoggedIn={this.state.isLoggedIn}/>} />
           <Route path="/create" render={() => <Create {...this.state} />} />
           <Route path="/:id" render={(props) => <Show {...props} {...this.state}/>} />
