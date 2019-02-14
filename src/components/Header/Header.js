@@ -21,6 +21,9 @@ class Header extends Component {
           <Link to="/users/login">
             Log In
           </Link>
+          <Link to="/users/logout">
+            Log Out
+          </Link>
         </nav>
       </div>
     );

@@ -6,6 +6,7 @@ import Header from '../Header/Header'
 import Create from '../Create/Create'
 import SignUp from '../SignUp/SignUp'
 import LogIn from '../LogIn/LogIn'
+import LogOut from '../LogOut/LogOut'
 import axios from 'axios';
 
 const url = 'http://localhost:3001/users'
@@ -24,6 +25,7 @@ class App extends Component {
     this.signupChanger = this.signupChanger.bind(this)
     this.signupSubmit = this.signupSubmit.bind(this)
     this.loginSubmit = this.loginSubmit.bind(this)
+    this.logoutSubmit = this.logoutSubmit.bind(this)
   }
 
   signupChanger(e) {
@@ -56,6 +58,15 @@ class App extends Component {
     })
     .catch(err => console.log(err))
   }
+
+  logoutSubmit() {
+    this.setState({
+      email: '',
+      password: '',
+      isLoggedIn: false
+    })
+    localStorage.clear()
+  }
   
   render() {
     return (
@@ -64,6 +75,7 @@ class App extends Component {
         <Switch>
           <Route path="/users/signup" render={() => <SignUp signupChanger={this.signupChanger} signupSubmit={this.signupSubmit} />} />
           <Route path="/users/login" render={() => <LogIn signupChanger={this.signupChanger} loginSubmit={this.loginSubmit}/>} />
+          <Route path="/users/logout" render={() => <LogOut logoutSubmit={this.logoutSubmit}/>} />
           <Route path="/create" component={Create} />
           <Route path="/:id" component={Show} />
           <Route path="/" component={Home} />
