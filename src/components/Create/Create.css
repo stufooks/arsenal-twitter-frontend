@@ -19,3 +19,14 @@ form * {
   height: 100px;
   width: 500px;
 }
+
+@media only screen and (max-width: 600px) {
+
+  .Create {
+    width: 94%;
+  }
+
+  .contentInput {
+    width: 80vw;
+  }
+}
