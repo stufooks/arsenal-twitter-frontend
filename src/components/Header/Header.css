@@ -13,6 +13,7 @@
   width: 50px;
   height: 50px;
   margin-left: 3vw;
+  background-repeat: no-repeat;
 }
 
 .new-icon {
@@ -43,4 +44,27 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.2em;
+  }
+
+  .icon {
+    margin-left: 1vw;
+    width: 40px;
+    height: 40px;
+  }
+
+  nav a {
+    font-size: .9em !important;
+    margin: 0 1vw 0 0 !important;
+  }
+
+  .new-icon {
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+  }
 }
