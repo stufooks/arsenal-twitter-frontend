@@ -3,7 +3,7 @@ import axios from 'axios';
 import Post from '../Post/Post'
 import './Home.css'
 
-const url = 'http://localhost:3001/api/posts'
+const url = 'https://arsenal-twitter.herokuapp.com/api/posts'
 
 class Home extends Component {
   constructor() {

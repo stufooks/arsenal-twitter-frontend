@@ -4,7 +4,7 @@ import Post from '../Post/Post'
 import axios from 'axios';
 import './Show.css'
 
-const url = 'http://localhost:3001/api/posts/'
+const url = 'https://arsenal-twitter.herokuapp.com/api/posts/'
 
 class Show extends Component {
   constructor() {

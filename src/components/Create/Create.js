@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 import './Create.css'
 
-const url = 'http://localhost:3001/api/posts'
+const url = 'https://arsenal-twitter.herokuapp.com/api/posts'
 
 class Create extends Component {
   constructor() {

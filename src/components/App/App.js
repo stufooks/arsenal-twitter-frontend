@@ -9,7 +9,7 @@ import SignUp from '../SignUp/SignUp'
 import LogIn from '../LogIn/LogIn'
 import axios from 'axios';
 
-const url = 'http://localhost:3001/users'
+const url = 'https://arsenal-twitter.herokuapp.com/users'
 
 class App extends Component {
   constructor() {
